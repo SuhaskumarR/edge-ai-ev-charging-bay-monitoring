@@ -97,7 +97,7 @@ sample_sensors()  →  runEdgeAIInference()  →  runOptimization()  →  publis
 
 ## 🧠 Edge AI Models
 
-Two lightweight models are exported to C++ (`esp32_blink/src/model.h`) and run directly on the ESP32.
+Two lightweight models are exported to C++ (`ev-charging-bay-firmware/src/model.h`) and run directly on the ESP32.
 
 | Model | Algorithm | Output | Export tool |
 |---|---|---|---|
@@ -120,7 +120,7 @@ Decisions are made every cycle and skipped while a manual RPC override is active
 | Free, peak-tariff hour, arrival probability ≥ threshold | `STANDBY_EXPECTING` | n/a |
 | Free, peak-tariff hour, low arrival probability | `LOW_DEMAND` | n/a |
 
-**Default parameters** (in `esp32_blink/src/State.cpp`):
+**Default parameters** (in `ev-charging-bay-firmware/src/State.cpp`):
 
 | Parameter | Default |
 |---|---|
@@ -134,7 +134,7 @@ Decisions are made every cycle and skipped while a manual RPC override is active
 
 ## 🔧 Hardware
 
-Simulated in Wokwi; the circuit is defined in `esp32_blink/test/diagram.json`.
+Simulated in Wokwi; the circuit is defined in `ev-charging-bay-firmware/test/diagram.json`.
 
 | Component | GPIO | Role |
 |---|---|---|
@@ -148,7 +148,7 @@ Simulated in Wokwi; the circuit is defined in `esp32_blink/test/diagram.json`.
 | LED yellow | 19 | Bay charging |
 | LED red | 21 | Overload |
 
-Pin definitions live in `esp32_blink/include/config.h`.
+Pin definitions live in `ev-charging-bay-firmware/include/config.h`.
 
 ---
 
@@ -191,7 +191,7 @@ Requests arrive on `v1/devices/me/rpc/request/+` and are answered on `v1/devices
 
 ```
 edge-ai-ev-charging-bay-monitoring/
-└── esp32_blink/
+└── ev-charging-bay-firmware/
     ├── src/
     │   ├── main.cpp            # setup() and 2-second main loop
     │   ├── config.cpp          # WiFi, MQTT server, device token
@@ -228,7 +228,7 @@ edge-ai-ev-charging-bay-monitoring/
 
 ```bash
 git clone https://github.com/SuhaskumarR/edge-ai-ev-charging-bay-monitoring.git
-cd edge-ai-ev-charging-bay-monitoring/esp32_blink
+cd edge-ai-ev-charging-bay-monitoring/ev-charging-bay-firmware
 ```
 
 **2. Add your ThingsBoard device token**
@@ -243,7 +243,7 @@ WiFi is preset to `Wokwi-GUEST`, which the simulator provides.
 
 **3. Build**
 
-Open the `esp32_blink` folder in VS Code and let PlatformIO install the libraries, or run:
+Open the `ev-charging-bay-firmware` folder in VS Code and let PlatformIO install the libraries, or run:
 
 ```bash
 pio run
