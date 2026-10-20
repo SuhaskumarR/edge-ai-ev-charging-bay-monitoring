@@ -1,0 +1,22 @@
+ 
+// if we want to print temp , current , voltage in terminal
+//please paste all these in peripherals.cpp 
+//inside sample_sensors function after temp variable
+ 
+ Serial.print("current POT value :-> ");
+    Serial.println(current);
+    
+    Serial.print("Volatge POT value :-> ");
+    Serial.println(voltage);
+     
+     if(isnan(temperature)) // to validate temerature reading 
+     {
+         Serial.println("ERROR in reading the Temperature");
+     }
+     else
+     {
+        Serial.print("Temperature reading is :-> ");
+        Serial.print(temperature, 1);
+        Serial.println(" C");
+
+     }
